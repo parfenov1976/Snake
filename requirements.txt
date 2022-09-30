@@ -1,1 +1,1 @@
-Pillow 9.2
+Pillow==9.2
