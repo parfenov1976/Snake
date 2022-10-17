@@ -11,6 +11,9 @@ import random
 import PIL.Image
 import PIL.ImageTk
 import tkinter as tk
+import os
+
+basedir = os.path.dirname(__file__)
 
 
 class Cons:
@@ -49,14 +52,12 @@ class Board(tk.Canvas):
         self.apple_x = 160
         self.apple_y = 80
         try:  # перехват ошибки на случай проблем с загрузкой изображений
-            if sys.platform == 'win32':
-                self.idot = PIL.Image.open(r'data\dot.png')  # создание объекта изображения из файла
-                self.ihead = PIL.Image.open(r'data\head.png')  # создание объекта изображения из файла
-                self.iapple = PIL.Image.open(r'data\apple.png')  # создание фотоизображения из объекта изображения
-            elif sys.platform == 'darwin' or sys.platform == 'linux' or sys.platform == 'linux2':
-                self.idot = PIL.Image.open(r'data/dot.png')  # создание объекта изображения из файла
-                self.ihead = PIL.Image.open(r'data/head.png')  # создание объекта изображения из файла
-                self.iapple = PIL.Image.open(r'data/apple.png')  # создание фотоизображения из объекта изображения
+            self.idot = PIL.Image.open(os.path.join(basedir, 'data', 'dot.png'))
+            # создание объекта изображения из файла
+            self.ihead = PIL.Image.open(os.path.join(basedir, 'data', 'head.png'))
+            # создание объекта изображения из файла
+            self.iapple = PIL.Image.open(os.path.join(basedir, 'data', 'apple.png'))
+            # создание фотоизображения из объекта изображения
             self.dot = PIL.ImageTk.PhotoImage(self.idot)  # создание фотоизображения из объекта изображения
             self.head = PIL.ImageTk.PhotoImage(self.ihead)  # создание фотоизображения из объекта изображения
             self.apple = PIL.ImageTk.PhotoImage(self.iapple)  # создание фотоизображения из объекта изображения
