@@ -3,6 +3,7 @@
 Цель игры – съесть как можно больше яблок.
 После каждого съеденного яблока тело змеи увеличивается.
 Во время движения змейка должна уклоняться от стен и собственного тела.
+Игра сделана на базе примера:
 https://python-scripts.com/snake-game-python-tkinter
 """
 
@@ -110,7 +111,7 @@ class Board(tk.Canvas):
                 # в тело змейки, если яблоко было съедено по координатам яблока
                 self.locate_apple()  # вызов метода замены яблока
 
-    def move_snake(self):
+    def move_snake(self) -> None:
         """
         Метод, перемещающий змейку по холсту
         """
@@ -129,7 +130,7 @@ class Board(tk.Canvas):
         self.move(head, self.move_x, self.move_y)  # изменение направления движения змейки после
         # после каждого нажатия клавиш
 
-    def check_collisions(self):
+    def check_collisions(self) -> None:
         """
         Метод проверки на столкновения змеи с другими объектами
         """
@@ -212,7 +213,7 @@ class Board(tk.Canvas):
         else:
             self.game_over()  # вызов метода завершения игры если условие продолжения игры ложь
 
-    def pause_menu(self):
+    def pause_menu(self) -> None:
         if self.game_pause and self.in_game:
             self.after_cancel(self.timer_id)  # отмена запуска запланированной функции
             self.create_text(  # метод холста для создания текста на нем
